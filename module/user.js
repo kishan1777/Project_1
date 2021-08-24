@@ -72,3 +72,4 @@ exports.User = User;
 exports.validate = validateUser;
 exports.validateUpadtedUser = validateUpadtedUser;
 exports.genrateOtp = genrateOtp;
+exports.userSchema = userSchema;
