@@ -18,21 +18,20 @@ router.post('/', async (req, res) => {
         let isAdmin = await User.findOne({isAdmin:req.body.isAdmin});
         if(isAdmin === true) return res.status(400).send('Admin is already ragistared');
 
+        const salt = await bcrypt.genSalt(10);
         user = new User({
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
             isAdmin: req.body.isAdmin,
-            otp: genrateOtp()
+            otp: genrateOtp(),
+            password: await bcrypt.hash(req.body.password, salt)
         
         });
-
-        const salt = await bcrypt.genSalt(10);
-        user.password = await bcrypt.hash(user.password, salt);
         
-        user.save();
+        await user.save();
     
-        res.send({
+        return res.send({
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin

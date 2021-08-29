@@ -10,7 +10,7 @@ router.put('/',async (req, res) => {
         user.otp = genrateOtp();
         user = await user.save();
     
-        res.send('OTP has been send to you.');
+        return res.send('OTP has been send to you.');
     }
     catch(ex){
         res.send(ex.toString());

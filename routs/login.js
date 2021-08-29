@@ -16,9 +16,10 @@ router.post('/', async (req, res) => {
 
         if (user.isVerified == true) {
             const token = user.genrateAuthToken();   
-            res.header('x-auth-token',token).send({
+            return res.status(200).send({
                 name:user.name,
-                email: user.email
+                email: user.email,
+                token: token
             });
         }
         else{

@@ -26,8 +26,8 @@ router.post('/', async (req, res) => {
                 requsted: true
             });
     
-            friends = await friends.save();
-            res.send(friends);
+            await friends.save();
+            return res.send(friends);
         }
 
     }
@@ -46,7 +46,7 @@ router.get('/', async (req, res) => {
             .select({from: 1});
         if (!user.length) return res.status(400).send('no friend request.');
 
-        res.send(user);
+        return res.send(user);
         
     }
     catch(ex){
@@ -68,7 +68,7 @@ router.put('/', async (req, res) => {
             return res.send(`you accepted ${user.from} requst`);
         }
         else{
-            res.send(`${user.to} is alrady fraind with ${user.from}`);
+            return res.send(`${user.to} is alrady fraind with ${user.from}`);
         }
         
     }

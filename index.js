@@ -7,6 +7,7 @@ const verifiOtp = require('./routs/verifiOtp');
 const forgotpass = require('./routs/forgotpass');
 const resetpass = require('./routs/resetpass');
 const friendreq = require('./routs/friendreq');
+//const sendemail = require('./routs/sendemail');
 
 app.use(express.json());
 app.use('/api/user',user);
@@ -15,6 +16,7 @@ app.use('/api/verifiotp', verifiOtp);
 app.use('/api/forgotpassword', forgotpass);
 app.use('/api/resetpassword', resetpass);
 app.use('/api/friendreq', friendreq);
+//app.use('/api/sendemail', sendemail);
 
 mongoose.connect('mongodb://localhost/project1',{ useUnifiedTopology: true  ,useNewUrlParser: true })
     .then(() => console.log('conected...'))
