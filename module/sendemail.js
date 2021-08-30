@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+/*const nodemailer = require('nodemailer');
 const express = require('express');
 const { User } = require('./user');
 const router = express.Router();
@@ -36,7 +36,8 @@ router.post('/', async (req, res) => {
     
 });
 
-module.exports = router;
+module.exports = router; */
+
    
 
 

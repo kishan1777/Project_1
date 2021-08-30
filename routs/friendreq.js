@@ -2,6 +2,7 @@ const express = require('express');
 const { Friend } = require('../module/friendreq');
 const { User } = require('../module/user');
 const router = express();
+const mongoose = require('mongoose');
 
 router.post('/', async (req, res) => {
     try{
@@ -56,6 +57,9 @@ router.get('/', async (req, res) => {
 
 router.put('/', async (req, res) => {
     try{
+        let isValid = mongoose.Types.ObjectId.isValid(req.query._id);
+        if(isValid == false) return res.status(400).send('invalid ojectID');
+        
         let user = await Friend.findOne({_id: req.query._id})
         if (!user) return res.status(400).send('no requst');
 
