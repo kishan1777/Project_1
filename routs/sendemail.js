@@ -8,14 +8,14 @@ async function sendOtp(){
         port: 587,
         secure: false,
         auth:{
-            user:'mail2krkishan@gmail.com',
-            pass: 'vgqfaepiheluiaqw'
+            user:'',//sender email.
+            pass: 'vgq'//sender password.
         }
     });
 
     let info = await transporter.sendMail({
-        from: 'mail2krkishan@gmail.com',
-        to: 'dd065906@gmail.com',
+        from: ' ',// sender email.
+        to: ' ',// user email
         subject: 'OTP for signup',
         text: 'hello'
     })
